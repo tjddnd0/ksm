@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta http-equiv="Expires" content="-1">
+        <link rel="manifest" href="./manifest.json">
+        <link rel="stylesheet" href="./css/index.css?2024">
+        <link rel="icon" href="./img/ksmicon.png">
+        <link rel="apple-touch-icon" href="/img/logo.favicon.png">
+        <title>KSM</title>
+        <style>
+        #splash {
+            z-index: 10;
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.7s;
+        }
+
+        #splash-img {
+            width: 500px;
+            animation: fadein 0.7s;
+            animation-play-state: running;
+            animation-fill-mode: forwards;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            body {
+                background-color: #202124;
+                color: white;
+            }
+
+            #splash {
+                background-color: #202124;
+            }
+        }
+
+        .BUT {
+            width: 50px;
+            height: 50px;
+        }
+        </style>
+    </head>
+    <body onload="load();">
+        <div id="splash">
+            <img
+                src="./img/KSM.svg"
+                id="splash-img"
+                width="10%"
+                height="10%"
+            >
+        </div>
+        <div id="modal_background" onclick="modalClose()"></div>
+        <div id="content" style="display: none;">
+            <div id="modal_wrap" class="expandUp">
+                <div id="modal_close" onclick="modalClose()">
+                    <img src="./img/close.svg" width="100%">
+                </div>
+                <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
+                    <h1 id="modal_title">안녕하세요</h1>
+                    <h3 id="modal_content">반갑습니다</h3>
+                </div>
+            </iframe>
+        </div>
+        <div id="story-sub">
+            <div class="font40px">스토리</div>
+            <div id="asm">
+                <img src="./img/KSM.svg" style="height: 40px;" onclick="reload()">
+            </div>
+        </div>
+        <div id="story_main">
+            <div class="right_list_item" onClick="location.href='./page/storyedit.html'" style="background-image: url('./img/edit.png');"></div>
+            <div class="right_list"></div>
+        </div>
+        <div id="pc_content">
+            <div>
+                <div id="meal_div" class="meal_div">
+                    <div id="mealtext">
+                    </div>
+                    <div class="mealbackbutton">
+                        <img src="./img/arrow-up-solid.svg" id="arrow" onclick="changearrow();">
+                    </div>
+                    <input
+                        type="date"
+                        id="inputdate"
+                        class="inputdate"
+                        onchange="apply_meal(0);"
+                    >
+                    <div id="mealTime" class="mealtimebutton_div">
+                            <div class="form_radio_btn radio_male">
+                                <input
+                                    id="radio-1"
+                                    type="radio"
+                                    name="mealtype"
+                                    value="0"
+                                    onclick="optionClicked(this, 0)"
+                                >
+                                <label for="radio-1">조식</label>
+                            </div>
+                            <div class="form_radio_btn">
+                                <input
+                                    id="radio-2"
+                                    type="radio"
+                                    name="mealtype"
+                                    value="1"
+                                    onclick="optionClicked(this, 0)"
+                                >
+                                <label for="radio-2">중식</label>
+                            </div>
+                            <div class="form_radio_btn">
+                                <input
+                                    id="radio-3"
+                                    type="radio"
+                                    name="mealtype"
+                                    value="2"
+                                    onclick="optionClicked(this, 0)"
+                                >
+                                <label for="radio-3">석식</label>
+                            </div>
+                    </div>
+                    <button onclick="optionClicked(this, 1);"><</button>
+                    <button onclick="optionClicked(this, 2);">></button>
+                </div>
+                <div class="widget">
+                    <div id="flutterMessageTitle" style="text-align: center;"></div>
+                    <!-- <button class="BUT" onclick="fromWebToApp('AA')">A 버튼</button>
+                    <button class="BUT" onclick="fromWebToApp('BB')">B 버튼</button>
+                    <button class="BUT" onclick="fromWebToApp('CC')">C 버튼</button>
+                    <button class="BUT" onclick="fromWebToApp('DD')">D 버튼</button> -->
+                </div>
+            </div>
+            <div id="function_div">
+                <div class="function" id="asm_function" style="height: 250px;margin-top: 25px;">
+                    <div id="asm_function_main">
+                        <div id="asm_function_main_div" onclick="asmfuctionurl()">
+                            <div id="asm_function_main_div_circle">
+                                <img id="asmsvg" src="./img/asmsvg.svg" width="70%">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="asm_function_sub">
+                        <div id="asm_function_sub_b1" class="asm_function_sub_b" onclick="asmfuction(this.id)">
+                            유튜브
+                        </div>
+                        <div
+                            id="asm_function_sub_b2"
+                            class="asm_function_sub_b"
+                            style="margin: 7px 0px 7px 0px;"
+                            onclick="asmfuction(this.id)"
+                        >
+                            홈
+                        </div>
+                        <div id="asm_function_sub_b3" class="asm_function_sub_b" onclick="asmfuction(this.id)">
+                            마이스터
+                        </div>
+                    </div>
+                </div>
+                <div class="function">
+                    <div class="function_text" style="margin-top: 0px;">공부</div>
+                    <function-widget data='["https://chat.openai.com/", "chatgpt.svg", "ChatGPT", "사이트로 이동합니다."]'></function-widget>
+                    <function-widget data='["https://bard.google.com/", "bard.svg", "Bard", "사이트로 이동합니다."]'></function-widget>
+                    <function-widget data='["https://www.classcard.net/", "classcard.png", "클래스카드", "사이트로 이동합니다."]'></function-widget>
+                    <div class="function_text">학교</div>
+                    <function-widget data='["asmmeal.html", "mealsubmit.svg", "급식신청", "페이지로 이동합니다."]'></function-widget>
+                    <function-widget data='["about:blank", "book.svg", "도서관검색", "페이지로 이동합니다."]'></function-widget>
+                    <function-widget data='["https://schoolbell-e.com/ko/main/home", "schoolpaper.svg", "학교종이", "사이트로 이동합니다."]'></function-widget>
+                    <div class="function_text">기숙사</div>
+                    <function-widget data='["about:blank", "music.svg", "점호송신청", "페이지로 이동합니다."]'></function-widget>
+                    <function-widget data='["about:blank", "check.svg", "시설체크", "페이지로 이동합니다."]'></function-widget>
+                    <div class="function_text">자격증</div>
+                    <function-widget data='["https://www.q-net.or.kr/man004.do?id=manSubMain", "qnet.svg", "Qnet", "사이트로 이동합니다."]'></function-widget>
+                    <function-widget data='["https://license.korcham.net/indexmain.jsp", "korea.svg", "대한상공회의소", "사이트로 이동합니다."]'></function-widget>
+                    <div class="function_text">기타</div>
+                    <function-widget data='["about:blank", "plusminus.svg", "상/벌점", "페이지로 이동합니다."]'></function-widget>
+                    <function-widget data='["about:blank", "cloud.svg", "파일공유", "페이지로 이동합니다."]'></function-widget>
+                    <function-widget data='["about:blank", "setting.svg", "설정", "페이지로 이동합니다."]'></function-widget>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/meal.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAg-7fux86ZF0KfIkzCchO-sDyZ9_BJef8",
+            authDomain: "kisuksasm.firebaseapp.com",
+            projectId: "kisuksasm",
+            storageBucket: "kisuksasm.appspot.com",
+            messagingSenderId: "533806376102",
+            appId: "1:533806376102:web:55ff491ecaeea82d9dc067",
+            measurementId: "G-0V1M5LCDER"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const storageRef = storage.ref();
+
+        window.addEventListener('load', function () {
+            var timer = setTimeout(function () {
+                $('#splash').css('opacity', '0');
+                $('#content').css('display', 'block');
+
+                // 스플래시 화면을 숨기기 위해 페이드 아웃이 완료되면 display: none으로 변경
+                setTimeout(function () {
+                    splash.style.display = 'none';
+                    $('splash').css('display', 'none');
+                }, 700); // 0.8초 후에 스플래시 화면 숨김
+                clearTimeout(timer);
+            }, 500); // 2초 후에 스플래시 화면 페이드 아웃 시작
+        });
+
+        window.addEventListener('popstate', function (event) {
+            modalClose();
+        });
+
+        class 클래스 extends HTMLElement {
+            connectedCallback() {
+                const itemdata = this.getAttribute('data');
+                const items = JSON.parse(itemdata);
+                this.innerHTML = '<div class="function_item" onclick="location.href=\'' + items[0] + '\'">\
+                    <div class="function_item_img">\
+                    <img src="./img/function/'+ items[1] + '" width="100%"\
+                    style="border-radius: 15px;"></div>\
+                    <div class="function_item_title">\
+                    <div class="function_item_main">'+ items[2] + '</div>\
+                    <div class="function_item_sub">'+ items[3] + '</div>\
+                    </div></div>';
+            }
+        }
+
+        customElements.define('function-widget', 클래스);
+
+        function readData() {
+            // 데이터 가져오기
+            db.collection("storys")
+            .get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                var 템플릿 = `<div id="${doc.id}" class="right_list_item" onClick="javascript:story('${doc.id}')" style="background-image: url('${doc.data().사진}');">
+                            <div class="right_list_item_title">${doc.data().제목}</div></div>`;
+                            $(".right_list").append(템플릿);
+                console.log(doc.id, " => ", doc.data());
+                });
+            })
+            .catch((error) => {
+                console.error("Error getting documents: ", error);
+            });
+        }
+        readData();
+
+        function story(docId) {
+            db.collection("storys")
+            .doc(String(docId))
+            .get()
+            .then((doc) => {
+                $("#modal_title").html(doc.data().제목);
+                $("#modal_content").html(doc.data().내용);
+
+                console.log("선택 스토리 제목 => ",doc.data().제목);
+            });
+            modalOpen();
+        }
+
+        // 모달 열기
+        function modalOpen() {
+            window.history.pushState(null, null, window.location.href);
+            $('#modal_wrap').css('display', 'block');
+            $('#modal_background').css('display', 'block');
+            $('html').css('overflow-y', 'hidden');
+        }
+
+        // 모달 끄기
+        function modalClose() {
+            $('#modal_wrap').css('display', 'none');
+            $('#modal_background').css('display', 'none');
+            $('#story-iframe').attr('src', 'about:blank');
+            $('html').css('overflow-y', 'auto');
+        }
+
+        // 뒤로가기 시 모달 바로 끄기
+        var iframe = document.getElementById("story-iframe");
+
+        function handleIFrameURLChange() {
+            var currentURL = iframe.contentWindow.location.href;
+
+            if (currentURL === "about:blank") {
+                modalClose();
+            }
+        }
+
+        function fromAppToWeb(msg) {
+            document.querySelector('#flutterMessageTitle').innerHTML = msg;
+        }
+
+        function fromWebToApp(msg) {
+            var now = new Date();	// 현재 날짜 및 시간
+            //toApp.postMessage('' + now);
+            toApp.postMessage(msg);
+        }
+
+        b1 = document.getElementById('asm_function_sub_b1');
+        b2 = document.getElementById('asm_function_sub_b2');
+        b3 = document.getElementById('asm_function_sub_b3');
+        asmsvg = document.getElementById('asmsvg');
+        asmdiv = document.getElementById('asm_function_main_div');
+
+        asmurl = 1;
+
+        function asmfuction(b) {
+            //alert(b);
+            if (b == 'asm_function_sub_b1') {
+                asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
+                asmdiv.style.backgroundColor = '#ef2e32';
+                b1.style.backgroundColor = '#303134';
+                b2.style.backgroundColor = 'transparent';
+                b3.style.backgroundColor = 'transparent';
+                asmurl = 1;
+            } else if (b == 'asm_function_sub_b2') {
+                asmsvg.style.filter = 'invert(71%) sepia(7%) saturate(3394%) hue-rotate(88deg) brightness(87%) contrast(83%)';
+                asmdiv.style.backgroundColor = '#40bb6a';
+                b1.style.backgroundColor = 'transparent';
+                b2.style.backgroundColor = '#303134';
+                b3.style.backgroundColor = 'transparent';
+                asmurl = 2;
+            } else if (b == 'asm_function_sub_b3') {
+                asmsvg.style.filter = 'invert(41%) sepia(81%) saturate(466%) hue-rotate(174deg) brightness(86%) contrast(91%)';
+                asmdiv.style.backgroundColor = '#3871c1';
+                b1.style.backgroundColor = 'transparent';
+                b2.style.backgroundColor = 'transparent';
+                b3.style.backgroundColor = '#303134';
+                asmurl = 3;
+            }
+        }
+
+        function asmfuctionurl() {
+            if (asmurl == 1) {
+                location.href='https://www.youtube.com/@user-qp4hz9hs9p';
+            }else if (asmurl == 2) {
+                location.href='http://smart.cnehs.kr/main.do';
+            }else if (asmurl == 3) {
+                location.href='https://asm.meistergo.co.kr/';
+            }
+        }
+        b1.style.backgroundColor = '#303134';
+        asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
+        asmdiv.style.backgroundColor = '#ef2e32';
+    </script>
+</body>
+</html>

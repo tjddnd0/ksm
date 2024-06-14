@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .expand-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.7s;
+            /* 버튼 내부의 넘치는 내용 감춤 */
+        }
+
+        .hidden-content {
+            height: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: height 0.3s ease-in-out;
+        }
+
+        .expand-btn:active .hidden-content {
+            width: 200px;
+            height: 100px;
+            /* 적절한 높이로 조절하세요 */
+        }
+
+        .expand-btn:active {
+            transform: scale(1.1);
+        }
+
+        #body {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    </style>
+    <title>Button Animation</title>
+</head>
+
+<body>
+    <div id="body">
+        <div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div></div>
+        <div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div></div>
+        <div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div><div class="container" onclick="handleButtonClick(this)">
+            <div class="expand-btn">
+                Hover me
+                <div class="hidden-content" id="hiddenContent">
+                    <p>This is the hidden content.</p>
+                </div>
+            </div>
+        </div></div>
+            
+    </div>
+    <script>
+        function handleButtonClick(clickedButton) {
+            // Remove 'active' class from all buttons
+            var buttons = document.querySelectorAll('.expand-btn');
+            buttons.forEach(function (button) {
+                button.classList.remove('active');
+            });
+
+            // Add 'active' class to the clicked button
+            clickedButton.classList.add('active');
+        }
+    </script>
+
+
+</body>
+
+</html>

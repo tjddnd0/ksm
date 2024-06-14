@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAIME-MOBILE</title>
+    <link rel="stylesheet" href="./index-mobile.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <script src="./index-mobile.js"></script>
+</head>
+<body onload="start();">
+        <div id="header" style="height: 70px;">상단</div>
+        <main id="main"></main>
+
+        <div id="main1"><div>
+            home
+        </div></div>
+
+        <div id="main2"><div>
+            meal
+        </div></div>
+
+        <div id="main3"><div>
+            main3
+        </div></div>
+
+        <div id="main4"><div>
+            main4
+        </div></div>
+</body>
+</html> 

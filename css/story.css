@@ -1,0 +1,181 @@
+@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+/**-----------------------------CSS 기본 스타일 제거----------------------------------**/
+
+/* Global styles */
+body {
+    font-family: 'GmarketSans';
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: #f9f9f9;
+}
+
+html {
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.top10px {
+    margin-top: 10px;
+}
+
+.border {
+    border: 4px solid black;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    body, #title, #content, #content-div {
+        background: #2b2a33;
+        color: white;
+    }
+}
+
+/* Common styles for all screen sizes */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+#img-div {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-origin: content-box;
+    background-color: #1c1b22;
+}
+
+#content-div {
+    grid-area: content-div;
+    padding: 40px 40px 40px 40px;
+}
+
+#title {
+    font-size: 45px;
+}
+
+#content {
+    padding: 30px 00px 30px 0px;
+    font-weight: 500;
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1024px) {
+    body {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr !important;
+        grid-template-areas: 'img-div content-div';
+    }
+
+    #img-div {
+        grid-area: img-div;
+    }
+
+    #content-div {
+        grid-area: content-div;
+        padding: 40px 40px 0px 40px;
+    }
+
+    #title {
+        font-size: 45px;
+    }
+
+    #content {
+        padding: 30px 00px 30px 0px;
+        font-size: 25px;
+    }
+}
+
+
+/* Tablet and Mobile styles */
+@media screen and (max-width: 1023px) {
+    #img-div {
+        height: 50vh;
+    }
+
+    #title {
+        font-size: 35px;
+    }
+
+    #content {
+        font-size: 25px;
+    }
+}
+
+/* Mobile specific styles */
+@media screen and (max-width: 540px) {
+    #title {
+        font-size: 30px;
+    }
+
+    #content {
+        font-size: 20px;
+    }
+}
+
+/* Light and Dark mode */
+@media (prefers-color-scheme: light) {
+    .themed {
+        background: white;
+        color: black;
+    }
+}
+
+/* Mobile touch and PC mouse styles */
+@media (hover: none) and (pointer: coarse), (hover: hover) and (pointer: fine) {
+    .function-item:active, .right-list-item:active {
+        transform: scale(0.98);
+    }
+
+    .function-item:hover, .right-list-item:hover {
+        transform: scale(1.01);
+    }
+}
+
+/* Galaxy Fold styles */
+@media (hover: hover) and (pointer: coarse) and (max-width: 540px) {
+    #title {
+        word-break: break-all;
+        word-wrap: normal;
+    }
+
+    #content {
+        font-size: 20px;
+        word-break: keep-all;
+        word-wrap: break-word;
+        white-space: no-wrap;
+        overflow: hidden;
+    }
+}
+
+/* Keyframes animation */
+@keyframes fadeout {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

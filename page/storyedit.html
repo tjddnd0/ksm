@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>스토리 추가</title>
+        <link rel="stylesheet" href="./story.css?2024">
+    </head>
+    <body style="padding:30px;">
+        <label for="title-area">제목</label>
+        <br>
+        <input
+            class="top10px boderr10px boder"
+            type="text"
+            name="title-area"
+            id="title-area"
+            required
+        >
+        <br>
+        <br>
+        <label for="content-area">내용</label>
+        <br>
+        <textarea
+            class="top10px boderr10px boder"
+            name="content-area"
+            id="content-area"
+            rows="4"
+            cols="50"
+            required
+        ></textarea>
+        <br>
+        <br>
+        <label for="imgpath">이미지</label>
+        <br>
+        <input
+            class="top10px"
+            type="file"
+            name="imgpath"
+            id="imgpath"
+            accept="image/*"
+            onchange="fileCheck(this);"
+        >
+        <br>
+        <br>
+        <button id="send">등록</button>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAg-7fux86ZF0KfIkzCchO-sDyZ9_BJef8",
+            authDomain: "kisuksasm.firebaseapp.com",
+            projectId: "kisuksasm",
+            storageBucket: "kisuksasm.appspot.com",
+            messagingSenderId: "533806376102",
+            appId: "1:533806376102:web:55ff491ecaeea82d9dc067",
+            measurementId: "G-0V1M5LCDER"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        function fileCheck(el) {
+            if (!/\.(jpeg|jpg|png|gif|bmp)$/i.test(el.value)) {
+                alert('이미지 파일만 업로드 가능합니다.');
+                el.value = '';
+                el.focus();
+            }
+        }
+
+        const yymmddhhmmss = getYYMMDDHHMMSS();
+
+        // Add data to Firestore
+        function addData() {
+            var file = document.querySelector("#imgpath").files[0];
+            var storageRef = storage.ref();
+            var 저장경로 = "image/" + `${yymmddhhmmss}${file.name}`
+            var 저장할경로 = storageRef.child(저장경로);
+            var 업로드작업 = 저장할경로.put(file)
+
+            업로드작업.on("state_changed",
+            null,
+            (error) => {
+                console.log(error);
+            },
+            () => {
+                업로드작업.snapshot.ref.getDownloadURL().then((url) => {
+                    console.log(url);
+                    const dataToAdd = {
+                        제목: $("#title-area").val(),
+                        내용: $("#content-area").val(),
+                        날짜: new Date(),
+                        사진: url
+                    };
+
+                    // 데이터 추가
+                    db.collection("storys")
+                        .add(dataToAdd)
+                        .then((docRef) => {
+                            console.log("Document written with ID: ", docRef.id);
+                        })
+                        .catch((error) => {
+                            console.error("Error adding document: ", error);
+                        });
+                    });
+            }   
+            );
+        }
+
+        function getYYMMDDHHMMSS() {
+            const now = new Date();
+            const year = now.getFullYear().toString().slice(-2);
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            return year + month + day + hours + minutes + seconds;
+        }
+
+
+        $("#send").click(function() {
+            addData();
+        });
+        </script>
+    </body>
+</html>

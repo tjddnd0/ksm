@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>아산스마트마이스터고 급식관리</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="http://ezschoolfood.co.kr/bootstrap-3.3.6/dist/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <script src="http://ezschoolfood.co.kr/bootstrap-3.3.6/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- bootbox -->
+  <script src="http://www.ccnplaza.com/ccnsoft/bootbox.min.js"></script>
+ </head>
+<body oncontextmenu='return false;'><div class="container text-center">
+	<div class="row">
+		<h3>학교급식신청</h3>
+		<hr>
+	</div>	
+	<div class="row">
+		<form id="login-form" action="http://ezschoolfood.co.kr/asm/schoolfood/check_login" method="post">
+		<div class="col-sm-4 text-center"></div>
+		<div class="col-sm-4 text-left">
+			<div id="div-login-msg">
+				<span id="text-login-msg" style="margin-left:5px">아이디를 입력하세요.</span>
+			</div>
+			<input id="login_username" style="border-radius: 50px;margin-bottom:10px" name="loginid" class="form-control" type="text" placeholder="로그인ID" required>
+			<div id="div-login-msg">
+				<span id="text-login-msg" style="margin-left:5px">비밀번호 입력</span>
+			</div>
+			<input id="login_password" style="border-radius: 50px;" name="loginpass" class="form-control" type="password" placeholder="비밀번호" required>
+			<hr>
+		</div>
+	</div>
+
+	<div class="net"></div>
+	<div class="row">
+		<div class="col-sm-4 text-center"></div>
+		<div class="col-sm-4 text-center">
+			<div><button type="submit" class="btn btn-primary btn-mg" style="border-radius: 50px;">로그인</button>
+			<!--<a href="http://ezschoolfood.co.kr/asm/schoolfood/member_add" class="btn btn-primary btn-mg">회원등록</a>-->
+			<!--<a href="http://ezschoolfood.co.kr/asm/schoolfood/find_pass" class="btn btn-primary btn-mg">비밀번호찾기</a></div>-->
+		</div>
+		</form>					
+	</div>	
+</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>

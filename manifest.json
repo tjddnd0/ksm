@@ -1,0 +1,17 @@
+{
+    "splashscreen": false,
+    "shot_name": "",
+    "name": "",
+    "background_color": "#2b2a33",
+    "theme_color": "#2b2a33",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "./asmsplash.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/index.php",
+    "display": "standalone"
+}

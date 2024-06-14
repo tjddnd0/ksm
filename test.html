@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Equal Division Grid</title>
+    </head>
+    <body>
+        <script>
+            /* Javascript 샘플 코드 */
+
+            key = "dr1avprMcmI2vo2EJ0nwTXKt%2BmjgV4UGtr6gnNPmr2OGWV9BTeIXPKz5lEmaKxmQJxwt25dC47D%2FT94wqKGsXg%3D%3D"
+            setmonth = "05"
+            const parser = new DOMParser();
+            holidays = [];
+            var xhr = new XMLHttpRequest();
+            var url = 'http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo'; /*URL*/
+            var queryParams = '?' + encodeURIComponent('serviceKey') + '='+key; /*Service Key*/
+            queryParams += '&' + encodeURIComponent('solYear') + '=' + encodeURIComponent('2024'); /**/
+            queryParams += '&' + encodeURIComponent('solMonth') + '=' + encodeURIComponent(setmonth); /**/
+            xhr.open('GET', url + queryParams);
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    xmlDoc = parser.parseFromString(this.responseText, "application/xml");
+                    const items = xmlDoc.getElementsByTagName("item");
+
+                    for (let i = 0; i < items.length; i++) {
+                    const item = items[i];
+                    const dateName = item.getElementsByTagName("dateName")[0].textContent;
+                    const date = item.getElementsByTagName("locdate")[0].textContent;
+                    holidays.push({
+                        dateName,
+                        date
+                    });
+                    }
+                    for (const index in holidays) {
+                        console.log(holidays[index].date, holidays[index].dateName); 
+                    }
+
+                    localStorage.setItem('holidaysDate', JSON.stringify(holidays));
+
+                    list = JSON.parse(localStorage.getItem('holidaysDate'));
+                    console.log(list[0].date);
+                }
+            };
+            
+
+            xhr.send('');
+        </script>
+    </body>
+</html>
