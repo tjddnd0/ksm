@@ -226,7 +226,7 @@ footer {
     align-items: center;
 }
 
-#header {
+.header {
     background-color: #f9f9f9;
     width: 100%;
     height: 35px !important;
@@ -241,7 +241,7 @@ footer {
     z-index: 100;
 }
 
-#clock-div {
+.clock-div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -249,37 +249,37 @@ footer {
     margin-left: 15px;
 }
 
-#clock {
+.clock {
     font-size: 15px;
     font-weight: 300;
 }
 
-#apm {
+.apm {
     font-size: 13px;
     font-weight: 300;
 }
 
-#asm {
+.asm {
     display: flex;
     justify-content: end;
     padding-right: 15px;
 }
 
-#arrow {
+.arrow {
     height: 30px;
     transform: rotate(180deg);
     transition: all 0.5s, filter 0.5s;
     cursor: pointer;
 }
 
-#story-sub {
+.story-sub {
     grid-area: s-sub;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px 15px 10px 30px;
 }
 
-#story_main {
+.story_main {
     grid-area: s-main;
     display: flex;
     justify-content: center;
@@ -441,11 +441,11 @@ footer {
     transition: background 0.5s, color 0.5s, height 0.5s;
 }
 
-#go_back_forward {
+.apm {
     grid-area: go_back_forward;
 }
 
-#mealtext {
+.mealtext {
     grid-area: mealtext;
     text-align: center;
     font-family: 'Pretendard';
@@ -590,21 +590,21 @@ body {
     color: transparent;
 }
 
-#content {
+.content {
     display: grid;
     padding-bottom: 50px;
 }
 
-#nolook {
+.nolook {
     display: none;
 }
 
-#modal_btn {
+.modal_btn {
     width: 500px;
     height: 100px;
 }
 
-#modal_wrap {
+.modal_wrap {
     display: none;
     width: 100vw;
     height: 100vh;
@@ -618,7 +618,7 @@ body {
     visibility: hidden;
 }
 
-#modal_background {
+.modal_background {
     display: none;
     position: fixed;
     width: 100%;
@@ -629,7 +629,7 @@ body {
     z-index: 1;
 }
 
-#modal_close {
+.modal_close {
     width: 30px;
     height: 30px;
     position: absolute;
@@ -640,32 +640,32 @@ body {
     transition: all 0.2s;
 }
 
-#modal_close:hover {
+.modal_close:hover {
     transform: scale(1.1);
 }
 
-#pc_content {
+.widget_content {
     padding: 0px;
 }
 
-#asm_function {
+.asm_function {
     display: grid;
     grid-template-rows: 2fr 1fr;
 }
 
-#asm_function_main {
+.asm_function_main {
     display: flex;
     justify-content: center !important;
 }
 
-#asm_function_sub {
+.asm_function_sub {
     background-color: #202124 !important;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-#asm_function_main_div {
+.asm_function_main_div {
     display: flex;
     width: 180px;
     height: 120px;
@@ -677,15 +677,15 @@ body {
     cursor: pointer;
 }
 
-#asm_function_main_div:hover {
+.asm_function_main_div:hover {
     transform: scale(1.05);
 }
 
-#asmsvg {
+.asmsvg {
     transition: all 0.2s;
 }
 
-#asm_function_main_div_circle {
+.asm_function_main_div_circle {
     display: flex;
     width: 160px;
     height: 100px;
@@ -716,7 +716,7 @@ body {
 
 /* desktop 규격 */
 @media screen and (min-width: 1024px) {
-    #modal_wrap {
+    .modal_wrap {
         width: 90vw;
         height: 90vh;
         top: 50%;
@@ -724,16 +724,16 @@ body {
         margin: -45vh 0 0 -45vw;
     }
 
-    #function_div {
+    .function_div {
         background-color: white;
         grid-area: function_div;
     }
 
-    #meal_div {
+    .meal_div {
         grid-area: meal_div;
     }
 
-    #pc_content {
+    .widget_content {
         display: grid;
         grid-template-columns: 2fr 1fr;
         grid-template-areas:
@@ -741,7 +741,7 @@ body {
         padding: 0px 150px 0px 150px;
     }
 
-    #story-sub {
+    .story-sub {
         padding: 50px 180px 10px 180px;
         margin: 0px 0px 10px 0px;
     }
@@ -759,7 +759,7 @@ body {
     }
 
     @media (prefers-color-scheme: dark) {
-        #function_div {
+        .function_div {
             background-color: #202124;
         }
     }
@@ -770,7 +770,7 @@ body {
 
 /* mobile 규격 */
 @media screen and (max-width: 540px) {
-    #mealtext {
+    .mealtext {
         font-size: 70%;
     }
 
@@ -785,7 +785,7 @@ body {
 
 /* 다크모드 */
 @media (prefers-color-scheme: dark) {
-    #meal_div {
+    .meal_div {
         background-color: #303134;
     }
 
@@ -793,7 +793,7 @@ body {
         background-color: #303134;
     }
 
-    #inputdate {
+    .inputdate {
         color: white;
     }
 
@@ -801,19 +801,19 @@ body {
         background-color: #303134;
     }
 
-    #splash {
+    .splash {
         background-color: #303134;
     }
 
-    #arrow {
+    .arrow {
         filter: invert(100%);
     }
 
-    #modal_wrap {
+    .modal_wrap {
         background-color: #303134;
     }
 
-    #modal_close {
+    .modal_close {
         filter: invert(100%);
     }
 

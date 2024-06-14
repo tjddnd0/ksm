@@ -111,14 +111,14 @@ async function syncMeal(API_URL, date, weekend, holiday) {
         if (buttonclick == 1) {
             console.log(nowmeal);
             //document.getElementById("mealTime").innerHTML = mealinfo[nowmeal][0];
-            document.getElementById("mealtext").innerHTML = mealinfo[nowmeal][1];
+            document.querySelector(".mealtext").innerHTML = mealinfo[nowmeal][1];
         } else if (buttonclick == 2) {
             console.log(nowmeal);
             //document.getElementById("mealTime").innerHTML = mealinfo[nowmeal][0];
-            document.getElementById("mealtext").innerHTML = mealinfo[nowmeal][1];
+            document.querySelector(".mealtext").innerHTML = mealinfo[nowmeal][1];
         } else if (buttonclick == 3) {
             console.log(nowmeal);
-            document.getElementById("mealtext").innerHTML = mealinfo[nowmeal][1];
+            document.querySelector(".mealtext").innerHTML = mealinfo[nowmeal][1];
 
             //document.getElementById("mealTime").innerHTML = mealinfo[nowmeal][0];
 
@@ -127,21 +127,21 @@ async function syncMeal(API_URL, date, weekend, holiday) {
     } else {
         if (hour < 13 && minutes <= 30) {
             //document.getElementById("mealTime").innerHTML = mealinfo[1][0];
-            document.getElementById("mealtext").innerHTML = mealinfo[1][1];
+            document.querySelector(".mealtext").innerHTML = mealinfo[1][1];
             nowmeal = 1
         } else if (hour > 13 && minutes >= 0) {
             //document.getElementById("mealTime").innerHTML = mealinfo[2][0];
-            document.getElementById("mealtext").innerHTML = mealinfo[2][1];
+            document.querySelector(".mealtext").innerHTML = mealinfo[2][1];
             nowmeal = 2
         }
     }
 
     if (mealinfo[nowmeal][0] == "조식") {
-        document.getElementById('radio-1').checked = true;
+        document.querySelector("#radio-1").checked = true;
     } else if (mealinfo[nowmeal][0] == "중식") {
-        document.getElementById('radio-2').checked = true;
+        document.querySelector("#radio-2").checked = true;
     } else if (mealinfo[nowmeal][0] == "석식") {
-        document.getElementById('radio-3').checked = true;
+        document.querySelector("#radio-3").checked = true;
     }
 }
 
@@ -152,7 +152,7 @@ function syncdate() {
     day = String(today.getDate()).padStart(2, '0');
 
     date = year + '-' + month + '-' + day
-    document.getElementById("inputdate").value = date;
+    document.querySelector(".inputdate").value = date;
 }
 
 function syncinputdata(n) {
@@ -160,19 +160,19 @@ function syncinputdata(n) {
     let month = n.substring(4, 6);
     let day = n.substring(6, 8);
 
-    document.getElementById("inputdate").value = `${year}-${month}-${day}`;
+    document.querySelector(".inputdate").value = `${year}-${month}-${day}`;
 }
 
 async function apply_meal(n) {
-    data = document.getElementById("meal_div").style.height;
+    data = document.querySelector(".meal_div").style.height;
     if (data != '500px') {
-        document.getElementById("meal_div").style.height = '500px';
-        document.getElementById("mealtext").style.display = "block";
-        document.getElementById("mealTime").style.display = "flex";
-        document.getElementById("arrow").style.transform = "rotate(0deg)";
+        document.querySelector(".meal_div").style.height = '500px';
+        document.querySelector(".mealtext").style.display = "block";
+        document.querySelector(".mealTime").style.display = "flex";
+        document.querySelector(".arrow").style.transform = "rotate(0deg)";
     }
 
-    DATE = document.getElementById("inputdate").value.replace(/-/g, '');
+    DATE = document.querySelector(".inputdate").value.replace(/-/g, '');
     if (buttonclick != 0) {
         DATE = getNextDay(new Date());
         console.log('다음 날 :', DATE)
@@ -190,9 +190,9 @@ async function apply_meal(n) {
         exists = false;
     }
     if ((week[dayOfWeek] == '토') || (week[dayOfWeek] == '일')) {
-        document.getElementById("mealtext").innerHTML = '주말입니다.';
+        document.querySelector(".mealtext").innerHTML = '주말입니다.';
     } else if (exists){
-        document.getElementById("mealtext").innerHTML = '공휴일입니다.';
+        document.querySelector(".mealtext").innerHTML = '공휴일입니다.';
     } else {
         await syncMeal(API_URL, DATE, week[dayOfWeek], exists);
     }

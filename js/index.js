@@ -1,12 +1,35 @@
 function load() {
     syncdate();
     apply_meal(0);
-    //clock();
     var dataToSend = {
         message: "Hello from JavaScript",
         additionalData: "Some additional data"
     };
     window.parent.postMessage(dataToSend, "*"); // "*"은 모든 origin에서 허용
+}
+
+function changearrow() {
+    data = document.querySelector(".meal_div").style.height;
+    mealdiv = document.querySelector(".meal_div");
+    mealtext = document.querySelector(".mealtext");
+    mealtime = document.querySelector(".mealTime");
+    arrow = document.querySelector(".arrow");
+
+    if (data != "500px") {
+        mealdiv.style.height = "500px";
+        mealtext.style.display = "block";
+        mealtime.style.display = "flex";
+        arrow.style.transform = "rotate(0deg)";
+    } else if (data == "500px") {
+        mealdiv.style.height = '30px';
+        mealtext.style.display = "none";
+        mealtime.style.display = "none";
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+function reload() {
+    window.location.reload(true);
 }
 
 // clockstart = setInterval(function () {
@@ -28,27 +51,3 @@ function load() {
 
 //     document.getElementById("apm").innerText = `${AmPm}`;
 // }
-
-function changearrow() {
-    data = document.getElementById("meal_div").style.height;
-    mealdiv = document.getElementById("meal_div");
-    mealtext = document.getElementById("mealtext");
-    mealtime = document.getElementById("mealTime");
-    arrow = document.getElementById("arrow");
-
-    if (data != "500px") {
-        mealdiv.style.height = "500px";
-        mealtext.style.display = "block";
-        mealtime.style.display = "flex";
-        arrow.style.transform = "rotate(0deg)";
-    } else if (data == "500px") {
-        mealdiv.style.height = '30px';
-        mealtext.style.display = "none";
-        mealtime.style.display = "none";
-        arrow.style.transform = "rotate(180deg)";
-    }
-}
-
-function reload() {
-    window.location.reload(true);
-}

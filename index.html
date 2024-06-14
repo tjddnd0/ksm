@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" href="/img/logo.favicon.png">
         <title>KSM</title>
         <style>
-        #splash {
+        .splash {
             z-index: 10;
             position: fixed;
             width: 100vw;
@@ -24,7 +24,7 @@
             transition: opacity 0.7s;
         }
 
-        #splash-img {
+        .splash-img {
             width: 500px;
             animation: fadein 0.7s;
             animation-play-state: running;
@@ -42,7 +42,7 @@
                 color: white;
             }
 
-            #splash {
+            .splash {
                 background-color: #202124;
             }
         }
@@ -54,43 +54,32 @@
         </style>
     </head>
     <body onload="load();">
-        <div id="splash">
+        <div class="splash">
             <img
-                src="./img/KSM.svg"
+                src="./img/ksmicon.png"
                 id="splash-img"
-                width="10%"
-                height="10%"
+                height="20%"
             >
         </div>
-        <div id="modal_background" onclick="modalClose()"></div>
-        <div id="content" style="display: none;">
-            <div id="modal_wrap" class="expandUp">
-                <div id="modal_close" onclick="modalClose()">
-                    <img src="./img/close.svg" width="100%">
-                </div>
-                <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
-                    <h1 id="modal_title">안녕하세요</h1>
-                    <h3 id="modal_content">반갑습니다</h3>
-                </div>
-            </iframe>
-        </div>
-        <div id="story-sub">
+        <div class="modal_background" onclick="modalClose()"></div>
+        <div class="content" style="display: none;">
+        <div class="story-sub">
             <div class="font40px">스토리</div>
-            <div id="asm">
-                <img src="./img/KSM.svg" style="height: 40px;" onclick="reload()">
+            <div class="asm">
+                <img src="./img/ksmicon.png" style="height: 50px;" onclick="reload()">
             </div>
         </div>
-        <div id="story_main">
+        <div class="story_main">
             <div class="right_list_item" onClick="location.href='./page/storyedit.html'" style="background-image: url('./img/edit.png');"></div>
             <div class="right_list"></div>
         </div>
-        <div id="pc_content">
+        <div class="widget_content">
             <div>
-                <div id="meal_div" class="meal_div">
-                    <div id="mealtext">
+                <div class="meal_div" class="meal_div">
+                    <div class="mealtext">
                     </div>
                     <div class="mealbackbutton">
-                        <img src="./img/arrow-up-solid.svg" id="arrow" onclick="changearrow();">
+                        <img src="./img/arrow-up-solid.svg" class="arrow" onclick="changearrow();">
                     </div>
                     <input
                         type="date"
@@ -98,7 +87,7 @@
                         class="inputdate"
                         onchange="apply_meal(0);"
                     >
-                    <div id="mealTime" class="mealtimebutton_div">
+                    <div class="mealtimebutton_div mealTime">
                             <div class="form_radio_btn radio_male">
                                 <input
                                     id="radio-1"
@@ -134,14 +123,14 @@
                     <button onclick="optionClicked(this, 2);">></button>
                 </div>
                 <div class="widget">
-                    <div id="flutterMessageTitle" style="text-align: center;"></div>
+                    <div class="flutterMessageTitle" style="text-align: center;"></div>
                     <!-- <button class="BUT" onclick="fromWebToApp('AA')">A 버튼</button>
                     <button class="BUT" onclick="fromWebToApp('BB')">B 버튼</button>
                     <button class="BUT" onclick="fromWebToApp('CC')">C 버튼</button>
                     <button class="BUT" onclick="fromWebToApp('DD')">D 버튼</button> -->
                 </div>
             </div>
-            <div id="function_div">
+            <div class="function_div">
                 <div class="function">
                     <div class="function_text" style="margin-top: 0px;">공부</div>
                     <function-widget data='["https://chat.openai.com/", "chatgpt.svg", "ChatGPT", "사이트로 이동합니다."]'></function-widget>
@@ -164,12 +153,21 @@
                 </div>
             </div>
         </div>
+        <div class="expandUp modal_wrap">
+            <div class="modal_close" onclick="modalClose()">
+                <img src="./img/close.svg" width="100%">
+            </div>
+            <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
+                <h1 class="modal_title">안녕하세요</h1>
+                <h3 class="modal_content">반갑습니다</h3>
+            </div>
+        </iframe>
+    </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
     <script src="./js/meal.js"></script>
     <script>
@@ -189,16 +187,17 @@
         const db = firebase.firestore();
         const storage = firebase.storage();
         const storageRef = storage.ref();
+        const splash = document.querySelector(".splash");
+        const content = document.querySelector(".content");
 
         window.addEventListener('load', function () {
             var timer = setTimeout(function () {
-                $('#splash').css('opacity', '0');
-                $('#content').css('display', 'block');
+                splash.style.opacity = '0';
+                content.style.display = 'block';
 
                 // 스플래시 화면을 숨기기 위해 페이드 아웃이 완료되면 display: none으로 변경
                 setTimeout(function () {
                     splash.style.display = 'none';
-                    $('splash').css('display', 'none');
                 }, 700); // 0.8초 후에 스플래시 화면 숨김
                 clearTimeout(timer);
             }, 500); // 2초 후에 스플래시 화면 페이드 아웃 시작
@@ -233,7 +232,7 @@
                 querySnapshot.forEach((doc) => {
                 var 템플릿 = `<div id="${doc.id}" class="right_list_item" onClick="javascript:story('${doc.id}')" style="background-image: url('${doc.data().사진}');">
                             <div class="right_list_item_title">${doc.data().제목}</div></div>`;
-                            $(".right_list").append(템플릿);
+                            document.querySelector(".right_list").innerHTML += 템플릿;
                 console.log(doc.id, " => ", doc.data());
                 });
             })
@@ -248,35 +247,37 @@
             .doc(String(docId))
             .get()
             .then((doc) => {
-                $("#modal_title").html(doc.data().제목);
-                $("#modal_content").html(doc.data().내용);
+                document.querySelector(".modal_title").innerHTML = doc.data().제목;
+                document.querySelector(".modal_content").innerHTML = doc.data().내용;
 
                 console.log("선택 스토리 제목 => ",doc.data().제목);
             });
             modalOpen();
         }
 
+        const modal_wrap = document.querySelector(".modal_wrap");
+        const modal_background = document.querySelector(".modal_background");
+        const html = document.querySelector("html");
+        const story_iframe = document.querySelector(".story-iframe");
+
         // 모달 열기
         function modalOpen() {
             window.history.pushState(null, null, window.location.href);
-            $('#modal_wrap').css('display', 'block');
-            $('#modal_background').css('display', 'block');
-            $('html').css('overflow-y', 'hidden');
+            modal_wrap.style.display = 'block';
+            modal_background.style.display = 'block';
+            html.style.overflowY = 'hidden';
         }
 
         // 모달 끄기
         function modalClose() {
-            $('#modal_wrap').css('display', 'none');
-            $('#modal_background').css('display', 'none');
-            $('#story-iframe').attr('src', 'about:blank');
-            $('html').css('overflow-y', 'auto');
+            modal_wrap.style.display = 'none';
+            modal_background.style.display = 'none';
+            html.style.overflowY = 'auto';
+            story_iframe.src = 'about:blank';
         }
 
-        // 뒤로가기 시 모달 바로 끄기
-        var iframe = document.getElementById("story-iframe");
-
         function handleIFrameURLChange() {
-            var currentURL = iframe.contentWindow.location.href;
+            var currentURL = story_iframe.contentWindow.location.href;
 
             if (currentURL === "about:blank") {
                 modalClose();
@@ -284,7 +285,7 @@
         }
 
         function fromAppToWeb(msg) {
-            document.querySelector('#flutterMessageTitle').innerHTML = msg;
+            document.querySelector('.flutterMessageTitle').innerHTML = msg;
         }
 
         function fromWebToApp(msg) {
@@ -293,11 +294,11 @@
             toApp.postMessage(msg);
         }
 
-        b1 = document.getElementById('asm_function_sub_b1');
-        b2 = document.getElementById('asm_function_sub_b2');
-        b3 = document.getElementById('asm_function_sub_b3');
-        asmsvg = document.getElementById('asmsvg');
-        asmdiv = document.getElementById('asm_function_main_div');
+        b1 = document.querySelector('.asm_function_sub_b1');
+        b2 = document.querySelector('.asm_function_sub_b2');
+        b3 = document.querySelector('.asm_function_sub_b3');
+        asmsvg = document.querySelector('.asmsvg');
+        asmdiv = document.querySelector('.asm_function_main_div');
 
         asmurl = 1;
 
