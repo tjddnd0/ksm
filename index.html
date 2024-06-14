@@ -74,83 +74,11 @@
             <div class="right_list"></div>
         </div>
         <div class="widget_content">
-            <div>
-                <div class="meal_div" class="meal_div">
-                    <div class="mealtext">
-                    </div>
-                    <div class="mealbackbutton">
-                        <img src="./img/arrow-up-solid.svg" class="arrow" onclick="changearrow();">
-                    </div>
-                    <input
-                        type="date"
-                        id="inputdate"
-                        class="inputdate"
-                        onchange="apply_meal(0);"
-                    >
-                    <div class="mealtimebutton_div mealTime">
-                            <div class="form_radio_btn radio_male">
-                                <input
-                                    id="radio-1"
-                                    type="radio"
-                                    name="mealtype"
-                                    value="0"
-                                    onclick="optionClicked(this, 0)"
-                                >
-                                <label for="radio-1">조식</label>
-                            </div>
-                            <div class="form_radio_btn">
-                                <input
-                                    id="radio-2"
-                                    type="radio"
-                                    name="mealtype"
-                                    value="1"
-                                    onclick="optionClicked(this, 0)"
-                                >
-                                <label for="radio-2">중식</label>
-                            </div>
-                            <div class="form_radio_btn">
-                                <input
-                                    id="radio-3"
-                                    type="radio"
-                                    name="mealtype"
-                                    value="2"
-                                    onclick="optionClicked(this, 0)"
-                                >
-                                <label for="radio-3">석식</label>
-                            </div>
-                    </div>
-                    <button onclick="optionClicked(this, 1);"><</button>
-                    <button onclick="optionClicked(this, 2);">></button>
-                </div>
-                <div class="widget">
-                    <div class="flutterMessageTitle" style="text-align: center;"></div>
-                    <!-- <button class="BUT" onclick="fromWebToApp('AA')">A 버튼</button>
-                    <button class="BUT" onclick="fromWebToApp('BB')">B 버튼</button>
-                    <button class="BUT" onclick="fromWebToApp('CC')">C 버튼</button>
-                    <button class="BUT" onclick="fromWebToApp('DD')">D 버튼</button> -->
-                </div>
+            <div class="main_widget">
+                a
             </div>
-            <div class="function_div">
-                <div class="function">
-                    <div class="function_text" style="margin-top: 0px;">공부</div>
-                    <function-widget data='["https://chat.openai.com/", "chatgpt.svg", "ChatGPT", "사이트로 이동합니다."]'></function-widget>
-                    <function-widget data='["https://bard.google.com/", "bard.svg", "Bard", "사이트로 이동합니다."]'></function-widget>
-                    <function-widget data='["https://www.classcard.net/", "classcard.png", "클래스카드", "사이트로 이동합니다."]'></function-widget>
-                    <div class="function_text">학교</div>
-                    <function-widget data='["asmmeal.html", "mealsubmit.svg", "급식신청", "페이지로 이동합니다."]'></function-widget>
-                    <function-widget data='["about:blank", "book.svg", "도서관검색", "페이지로 이동합니다."]'></function-widget>
-                    <function-widget data='["https://schoolbell-e.com/ko/main/home", "schoolpaper.svg", "학교종이", "사이트로 이동합니다."]'></function-widget>
-                    <div class="function_text">기숙사</div>
-                    <function-widget data='["about:blank", "music.svg", "점호송신청", "페이지로 이동합니다."]'></function-widget>
-                    <function-widget data='["about:blank", "check.svg", "시설체크", "페이지로 이동합니다."]'></function-widget>
-                    <div class="function_text">자격증</div>
-                    <function-widget data='["https://www.q-net.or.kr/man004.do?id=manSubMain", "qnet.svg", "Qnet", "사이트로 이동합니다."]'></function-widget>
-                    <function-widget data='["https://license.korcham.net/indexmain.jsp", "korea.svg", "대한상공회의소", "사이트로 이동합니다."]'></function-widget>
-                    <div class="function_text">기타</div>
-                    <function-widget data='["about:blank", "plusminus.svg", "상/벌점", "페이지로 이동합니다."]'></function-widget>
-                    <function-widget data='["about:blank", "cloud.svg", "파일공유", "페이지로 이동합니다."]'></function-widget>
-                    <function-widget data='["about:blank", "setting.svg", "설정", "페이지로 이동합니다."]'></function-widget>
-                </div>
+            <div class="sub_widget">
+                b
             </div>
         </div>
         <div class="expandUp modal_wrap">
