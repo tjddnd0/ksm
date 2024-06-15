@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollable Div</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 2000px; /* 예시용으로 큰 높이 설정 */
+            margin: 0;
+            padding: 0;
+        }
+
+        .scrollable-div {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .content {
+            display: inline-block;
+            width: 2000px; /* 예시용으로 큰 너비 설정 */
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrollable-div">
+        <div class="content">
+            <!-- 가로 스크롤이 필요한 긴 내용을 여기에 넣으세요 -->
+            <p>여기 가로로 긴 내용이 들어갑니다. 여기 가로로 긴 내용이 들어갑니다. 여기 가로로 긴 내용이 들어갑니다. 여기 가로로 긴 내용이 들어갑니다. 여기 가로로 긴 내용이 들어갑니다.</p>
+        </div>
+    </div>
+    <div class="main-content">
+        <!-- 바디가 스크롤 가능한 높이를 가지게 할 긴 내용을 여기에 넣으세요 -->
+        <p>여기 세로로 긴 내용이 들어갑니다.</p>
+        <p>여기 세로로 긴 내용이 들어갑니다.</p>
+        <p>여기 세로로 긴 내용이 들어갑니다.</p>
+        <!-- 필요에 따라 추가 내용을 넣으세요 -->
+    </div>
+    <script>
+        const scrollableDiv = document.querySelector('.scrollable-div');
+
+        scrollableDiv.addEventListener('mouseenter', () => {
+            document.body.style.overflowY = 'hidden';
+        });
+
+        scrollableDiv.addEventListener('mouseleave', () => {
+            document.body.style.overflowY = 'scroll';
+        });
+
+        scrollableDiv.addEventListener('wheel', (event) => {
+            if (event.deltaY !== 0) {
+                event.preventDefault();
+                scrollableDiv.scrollLeft += event.deltaY;
+            }
+        });
+    </script>
+</body>
+</html>
