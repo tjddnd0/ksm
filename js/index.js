@@ -14,16 +14,22 @@ function changearrow() {
     mealtext = document.querySelector(".mealtext");
     mealtime = document.querySelector(".mealTime");
     arrow = document.querySelector(".arrow");
+    meal_left = document.querySelector(".meal_left");
+    meal_right = document.querySelector(".meal_right");
 
     if (data != "500px") {
         mealdiv.style.height = "500px";
         mealtext.style.display = "block";
         mealtime.style.display = "flex";
+        meal_left.style.display = "block";
+        meal_right.style.display = "block";
         arrow.style.transform = "rotate(0deg)";
     } else if (data == "500px") {
         mealdiv.style.height = '30px';
         mealtext.style.display = "none";
         mealtime.style.display = "none";
+        meal_left.style.display = "none";
+        meal_right.style.display = "none";
         arrow.style.transform = "rotate(180deg)";
     }
 }
