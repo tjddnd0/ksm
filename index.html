@@ -53,53 +53,109 @@
         }
         </style>
     </head>
-    <body onload="load();">
-        <div class="splash">
-            <img
-                src="./img/ksmicon.png"
-                id="splash-img"
-                height="20%"
-            >
-        </div>
-        <div class="modal_background" onclick="modalClose()"></div>
+    <body>
         <div class="content" style="display: none;">
-        <div class="story-sub">
-            <div class="font40px">스토리</div>
-            <div class="asm">
-                <img src="./img/ksmicon.png" style="height: 50px;" onclick="reload()">
+            <div class="alert">
+                아산스마트팩토리마이스터고등학교 공지사항 2건.
             </div>
+            <header>
+                <div class="font40px">스토리</div>
+                <img src="./img/ksmicon.png" style="height: 60px;" onclick="reload()">
+            </header>
+            <main>
+                <div class="story">
+                    <div
+                        id="add"
+                        class="right_list_item"
+                        onClick="location.href='./page/storyedit.html'"
+                        style="background-image: url('./img/edit.png');"
+                    ></div>
+                    <div class="right_list"></div>
+                </div>
+                <div class="content1">
+                    <div class="widget"></div>
+                </div>
+                <div class="content2">
+                    <div class="widget" style="height: 1000px;">
+                        <div class="function_text" style="margin-top: 0px;">공부</div>
+                        <function-widget data='["https://chat.openai.com/", "chatgpt.svg", "ChatGPT 바로가기", "사이트로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://bard.google.com/", "bard.svg", "Bard", "사이트로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://www.classcard.net/", "classcard.png", "클래스카드", "사이트로 이동합니다."]'></function-widget>
+                        <div class="function_text">학교</div>
+                        <function-widget data='["asmmeal.html", "mealsubmit.svg", "급식신청", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["about:blank", "book.svg", "도서관검색", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://schoolbell-e.com/ko/main/home", "schoolpaper.svg", "학교종이", "사이트로 이동합니다."]'></function-widget>
+                        <div class="function_text">기숙사</div>
+                        <function-widget data='["about:blank", "music.svg", "점호송신청", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["about:blank", "check.svg", "시설체크", "페이지로 이동합니다."]'></function-widget>
+                        <div class="function_text">자격증</div>
+                        <function-widget data='["https://www.q-net.or.kr/man004.do?id=manSubMain", "qnet.svg", "Qnet", "사이트로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://license.korcham.net/indexmain.jsp", "korea.svg", "대한상공회의소", "사이트로 이동합니다."]'></function-widget>
+                        <div class="function_text">기타</div>
+                        <function-widget data='["about:blank", "plusminus.svg", "상/벌점", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["about:blank", "cloud.svg", "파일공유", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["about:blank", "setting.svg", "설정", "페이지로 이동합니다."]'></function-widget>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                footer
+            </footer>
+            <div class="splash">
+                <img src="./img/ksmicon.png" id="splash-img" height="20%">
+            </div>
+            <div class="modal_background" onclick="modalClose()"></div>
+            <div class="expandUp modal_wrap">
+                <div class="modal_close" onclick="modalClose()">
+                    <img src="./img/close.svg" width="100%">
+                </div>
+                <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
+                    <h1 class="modal_title">안녕하세요</h1>
+                    <h3 class="modal_content">반갑습니다</h3>
+                </div>
+            </iframe>
         </div>
-        <div class="story_main">
-            <div class="right_list_item" onClick="location.href='./page/storyedit.html'" style="background-image: url('./img/edit.png');"></div>
-            <div class="right_list"></div>
-        </div>
-        <div class="widget_content">
-            <div class="main_widget">
-                a
-            </div>
-            <div class="sub_widget">
-                b
-            </div>
-        </div>
-        <div class="expandUp modal_wrap">
-            <div class="modal_close" onclick="modalClose()">
-                <img src="./img/close.svg" width="100%">
-            </div>
-            <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
-                <h1 class="modal_title">안녕하세요</h1>
-                <h3 class="modal_content">반갑습니다</h3>
-            </div>
-        </iframe>
-    </div>
-    </div>
+    </body>
+    <script src="./js/index.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
-    <script src="./js/index.js"></script>
     <script src="./js/meal.js"></script>
     <script>
-        // Firebase configuration
+        const list = document.querySelector('.right_list');
+        let isScrolling;
+        let isScrollingLocked = false;
+        const SCROLL_SPEED_MULTIPLIER = 2; // 스크롤 속도를 조절하기 위한 배율
+
+        list.addEventListener('mouseenter', () => {
+            document.html.style.overflowY = 'hidden';
+        });
+
+        list.addEventListener('mouseleave', () => {
+            document.html.style.overflowY = 'scroll';
+        });
+
+        list.addEventListener('wheel', (event) => {
+            if (isScrollingLocked) return;
+
+            if (event.deltaY !== 0) {
+                event.preventDefault();
+                isScrollingLocked = true;
+                list.scrollLeft += event.deltaY * SCROLL_SPEED_MULTIPLIER;
+
+                clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    isScrollingLocked = false;
+                }, 100); // 디바운스 딜레이를 조정할 수 있습니다.
+            }
+        });
+
+        // Prevent body scroll when mouse is over scrollableDiv
+        list.addEventListener('wheel', (event) => {
+            event.preventDefault();
+        }, { passive: false });
+
         const firebaseConfig = {
             apiKey: "AIzaSyAg-7fux86ZF0KfIkzCchO-sDyZ9_BJef8",
             authDomain: "kisuksasm.firebaseapp.com",
@@ -109,7 +165,7 @@
             appId: "1:533806376102:web:55ff491ecaeea82d9dc067",
             measurementId: "G-0V1M5LCDER"
         };
-        // Initialize Firebase
+
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
@@ -121,7 +177,7 @@
         window.addEventListener('load', function () {
             var timer = setTimeout(function () {
                 splash.style.opacity = '0';
-                content.style.display = 'block';
+                content.style.display = 'grid';
 
                 // 스플래시 화면을 숨기기 위해 페이드 아웃이 완료되면 display: none으로 변경
                 setTimeout(function () {
@@ -141,11 +197,10 @@
                 const items = JSON.parse(itemdata);
                 this.innerHTML = '<div class="function_item" onclick="location.href=\'' + items[0] + '\'">\
                     <div class="function_item_img">\
-                    <img src="./img/function/'+ items[1] + '" width="100%"\
-                    style="border-radius: 15px;"></div>\
+                    <img src="./img/function/'+ items[1] + '" class="function_item_img"\
+                    width="100%""></div>\
                     <div class="function_item_title">\
                     <div class="function_item_main">'+ items[2] + '</div>\
-                    <div class="function_item_sub">'+ items[3] + '</div>\
                     </div></div>';
             }
         }
@@ -222,52 +277,51 @@
             toApp.postMessage(msg);
         }
 
-        b1 = document.querySelector('.asm_function_sub_b1');
-        b2 = document.querySelector('.asm_function_sub_b2');
-        b3 = document.querySelector('.asm_function_sub_b3');
-        asmsvg = document.querySelector('.asmsvg');
-        asmdiv = document.querySelector('.asm_function_main_div');
+        // b1 = document.querySelector('.asm_function_sub_b1');
+        // b2 = document.querySelector('.asm_function_sub_b2');
+        // b3 = document.querySelector('.asm_function_sub_b3');
+        // asmsvg = document.querySelector('.asmsvg');
+        // asmdiv = document.querySelector('.asm_function_main_div');
 
-        asmurl = 1;
+        // asmurl = 1;
 
-        function asmfuction(b) {
-            //alert(b);
-            if (b == 'asm_function_sub_b1') {
-                asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
-                asmdiv.style.backgroundColor = '#ef2e32';
-                b1.style.backgroundColor = '#303134';
-                b2.style.backgroundColor = 'transparent';
-                b3.style.backgroundColor = 'transparent';
-                asmurl = 1;
-            } else if (b == 'asm_function_sub_b2') {
-                asmsvg.style.filter = 'invert(71%) sepia(7%) saturate(3394%) hue-rotate(88deg) brightness(87%) contrast(83%)';
-                asmdiv.style.backgroundColor = '#40bb6a';
-                b1.style.backgroundColor = 'transparent';
-                b2.style.backgroundColor = '#303134';
-                b3.style.backgroundColor = 'transparent';
-                asmurl = 2;
-            } else if (b == 'asm_function_sub_b3') {
-                asmsvg.style.filter = 'invert(41%) sepia(81%) saturate(466%) hue-rotate(174deg) brightness(86%) contrast(91%)';
-                asmdiv.style.backgroundColor = '#3871c1';
-                b1.style.backgroundColor = 'transparent';
-                b2.style.backgroundColor = 'transparent';
-                b3.style.backgroundColor = '#303134';
-                asmurl = 3;
-            }
-        }
+        // function asmfuction(b) {
+        //     //alert(b);
+        //     if (b == 'asm_function_sub_b1') {
+        //         asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
+        //         asmdiv.style.backgroundColor = '#ef2e32';
+        //         b1.style.backgroundColor = '#303134';
+        //         b2.style.backgroundColor = 'transparent';
+        //         b3.style.backgroundColor = 'transparent';
+        //         asmurl = 1;
+        //     } else if (b == 'asm_function_sub_b2') {
+        //         asmsvg.style.filter = 'invert(71%) sepia(7%) saturate(3394%) hue-rotate(88deg) brightness(87%) contrast(83%)';
+        //         asmdiv.style.backgroundColor = '#40bb6a';
+        //         b1.style.backgroundColor = 'transparent';
+        //         b2.style.backgroundColor = '#303134';
+        //         b3.style.backgroundColor = 'transparent';
+        //         asmurl = 2;
+        //     } else if (b == 'asm_function_sub_b3') {
+        //         asmsvg.style.filter = 'invert(41%) sepia(81%) saturate(466%) hue-rotate(174deg) brightness(86%) contrast(91%)';
+        //         asmdiv.style.backgroundColor = '#3871c1';
+        //         b1.style.backgroundColor = 'transparent';
+        //         b2.style.backgroundColor = 'transparent';
+        //         b3.style.backgroundColor = '#303134';
+        //         asmurl = 3;
+        //     }
+        // }
 
-        function asmfuctionurl() {
-            if (asmurl == 1) {
-                location.href='https://www.youtube.com/@user-qp4hz9hs9p';
-            }else if (asmurl == 2) {
-                location.href='http://smart.cnehs.kr/main.do';
-            }else if (asmurl == 3) {
-                location.href='https://asm.meistergo.co.kr/';
-            }
-        }
-        b1.style.backgroundColor = '#303134';
-        asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
-        asmdiv.style.backgroundColor = '#ef2e32';
+        // function asmfuctionurl() {
+        //     if (asmurl == 1) {
+        //         location.href='https://www.youtube.com/@user-qp4hz9hs9p';
+        //     }else if (asmurl == 2) {
+        //         location.href='http://smart.cnehs.kr/main.do';
+        //     }else if (asmurl == 3) {
+        //         location.href='https://asm.meistergo.co.kr/';
+        //     }
+        // }
+        // b1.style.backgroundColor = '#303134';
+        // asmsvg.style.filter = 'invert(26%) sepia(95%) saturate(4736%) hue-rotate(346deg) brightness(99%) contrast(88%)';
+        // asmdiv.style.backgroundColor = '#ef2e32';
     </script>
-</body>
 </html>
