@@ -1,24 +1,19 @@
-@import url('https://webfontworld.github.io/gmarket/GmarketSans.css');
-
-/* http://meyerweb.com/eric/tools/css/reset/ 
-v2.0 | 20110126
-License: none (public domain)
-*/
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
-/* HTML5 display-role reset for older browsers */
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
-body {line-height: 1;}
-ol, ul {list-style: none;}
-blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
-table{border-collapse:collapse;border-spacing:0}
-/**-----------------------------CSS 기본 스타일 제거----------------------------------**/
+@import url('init.css');
+@import url('font.css');
 
 /* Global styles */
 body {
-    font-family: 'GmarketSans';
+    font-family: 'Pretendard';
     font-size: 2rem;
     font-weight: bold;
     background-color: #f9f9f9;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 html {
@@ -26,8 +21,95 @@ html {
     box-sizing: border-box;
 }
 
-.top10px {
+* {
+    font-family: 'Pretendard';
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard syntax */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 100px;
+    width: 1000px;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px 0px;
+}
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+    justify-content: start;
+    transition: background 0.5s, color 0.5s, height 0.5s;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+}
+
+.textarea {
+    border-radius: 10px;
+}
+
+label {
+    font-size: 40px;
+}
+
+textarea {
     margin-top: 10px;
+    height: 100%;
+    border: none;
+    resize: none;
+    font-size: 20px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+    outline: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    
+}
+
+textarea:focus {
+    border: 2px solid rgb(45, 45, 45);
+    outline: none;
+    padding: 20px;
+}
+
+textarea::placeholder {
+    color: #f9f9f9;
+    transition: color 0.3s ease-in-out; /* 색상 변경에 트랜지션 효과 추가 */
+}
+
+textarea:focus::placeholder {
+    color: #2b2a33; /* 포커스 후 placeholder 텍스트 색상 */
+}
+
+button {
+    font-size: 40px;
+    font-weight: 700;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+    justify-content: start;
+    transition: background 0.5s, color 0.5s, height 0.5s;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    border: 0px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+button:hover {
+    transform: scale(1.05);
+    border: 2px solid #1c1b22;
 }
 
 .border {

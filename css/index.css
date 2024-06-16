@@ -326,7 +326,7 @@ main {
     grid-template-rows: 1.5fr 1fr;
     overflow: auto; /* 내부 요소가 넘칠 경우 스크롤바 표시 */
     background-color: #FAFAFA;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1); */
     border-radius: 10px;
 }
 
