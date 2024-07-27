@@ -637,13 +637,12 @@ content {
     width: 30px;
     height: 30px;
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
     background-color: transparent;
     transition: all 0.2s;
-    filter: invert(100%);
-}   
+}
 
 .modal_close:hover {
     transform: scale(1.1);
@@ -810,7 +809,7 @@ content {
     }
 
     .modal_close {
-        filter: invert(0%);
+        filter: invert(100%);
     }
 
     .function {

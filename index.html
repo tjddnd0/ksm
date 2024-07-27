@@ -70,14 +70,13 @@
             </header>
             <main>
                 <div class="story">
-                    <div
+                    <!-- <div
                         id="add"
                         class="right_list_item"
                         onClick="location.href='./page/storyedit.html'"
                         style="background-image: url('./img/edit.png');"
                     ></div>
-                    <div class="right_list"></div>
-                </div>
+                    <div class="right_list"></div> --></div>
                 <div class="content1">
                     <div class="widget meal_div">
                         <div class="mealtext"></div>
@@ -159,15 +158,20 @@
                 <a href="https://mail.google.com/mail/?view=cm&to=8019jsw@naver.com&su=서비스 KSM 문의관련&body=문의 사항을 작성해주세요.">문의하기</a>
                 <p>&nbsp;|</p>
             </footer>
+            <div class="nav_bar">
+                a
+                b
+                c
+            </div>
             <div class="splash">
                 <img src="./img/ksmicon.png" id="splash-img" height="20%">
             </div>
             <div class="modal_background" onclick="modalClose()"></div>
             <div class="expandUp modal_wrap">
                 <div class="modal_close" onclick="modalClose()">
-                    <img src="/img/x.png" width="100%">
+                    <img src="./img/close.svg" width="100%">
                 </div>
-                <div style="background-color: #303134;width: 100%;height: 100%;border: 1px solid black;">
+                <div style="background-color: red;width: 100%;height: 100%;border: 1px solid black;">
                     <h1 class="modal_title">안녕하세요</h1>
                     <h3 class="modal_content">반갑습니다</h3>
                 </div>
@@ -186,33 +190,33 @@
         let isScrollingLocked = false;
         const SCROLL_SPEED_MULTIPLIER = 2; // 스크롤 속도를 조절하기 위한 배율
 
-        list.addEventListener('mouseenter', () => {
-            document.html.style.overflowY = 'hidden';
-        });
+        // list.addEventListener('mouseenter', () => {
+        //     document.html.style.overflowY = 'hidden';
+        // });
 
-        list.addEventListener('mouseleave', () => {
-            document.html.style.overflowY = 'scroll';
-        });
+        // list.addEventListener('mouseleave', () => {
+        //     document.html.style.overflowY = 'scroll';
+        // });
 
-        list.addEventListener('wheel', (event) => {
-            if (isScrollingLocked) return;
+        // list.addEventListener('wheel', (event) => {
+        //     if (isScrollingLocked) return;
 
-            if (event.deltaY !== 0) {
-                event.preventDefault();
-                isScrollingLocked = true;
-                list.scrollLeft += event.deltaY * SCROLL_SPEED_MULTIPLIER;
+        //     if (event.deltaY !== 0) {
+        //         event.preventDefault();
+        //         isScrollingLocked = true;
+        //         list.scrollLeft += event.deltaY * SCROLL_SPEED_MULTIPLIER;
 
-                clearTimeout(isScrolling);
-                isScrolling = setTimeout(() => {
-                    isScrollingLocked = false;
-                }, 100); // 디바운스 딜레이를 조정할 수 있습니다.
-            }
-        });
+        //         clearTimeout(isScrolling);
+        //         isScrolling = setTimeout(() => {
+        //             isScrollingLocked = false;
+        //         }, 100); // 디바운스 딜레이를 조정할 수 있습니다.
+        //     }
+        // });
 
-        // Prevent body scroll when mouse is over scrollableDiv
-        list.addEventListener('wheel', (event) => {
-            event.preventDefault();
-        }, { passive: false });
+        // // Prevent body scroll when mouse is over scrollableDiv
+        // list.addEventListener('wheel', (event) => {
+        //     event.preventDefault();
+        // }, { passive: false });
 
         const firebaseConfig = {
             apiKey: "AIzaSyAg-7fux86ZF0KfIkzCchO-sDyZ9_BJef8",
