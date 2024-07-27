@@ -490,23 +490,26 @@ footer > a:hover {
     z-index: 100;
 }
 
-.clock-div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
-    margin-left: 15px;
+.clock_div {
+    display: flex;
+    justify-content: left;
+    width: 200px;
 }
 
-.clock {
-    font-size: 15px;
-    font-weight: 300;
+.clock_div > .apm {
+    font-weight: 200;
+    margin-right: 10px;
+    font-size: 30px;
 }
 
-.apm {
-    font-size: 13px;
-    font-weight: 300;
+.clock_div > .clock {
+    display: flex;
+    font-weight: 100;
+    font-size: 23px;
+    align-self: end;
 }
+
+
 
 .asm {
     display: flex;
