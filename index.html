@@ -59,7 +59,7 @@
             </div>
             <header>
                 <div class="font40px">스토리</div>
-                <img src="./img/ksmicon.png" style="height: 60px;" onclick="reload()">
+                <img src="./img/ksmicon.png" class="ksmicon" style="height: 60px;" onclick="reload()">
             </header>
             <main>
                 <div class="story">
@@ -75,8 +75,8 @@
                     <div class="widget meal_div">
                         <div class="mealtext">
                         </div>
-                        <button class="meal_left" onclick="optionClicked(this, 1);"><</button>
-                        <button class="meal_right" onclick="optionClicked(this, 2);">></button>
+                        <div class="meal_left" onclick="optionClicked(this, 1);"></div>
+                        <div class="meal_right" onclick="optionClicked(this, 2);"></div>
                         <div class="mealbackbutton">
                             <img src="./img/arrow-up-solid.svg" class="arrow" onclick="changearrow();">
                         </div>
@@ -124,12 +124,12 @@
                 <div class="content2">
                     <div class="widget function" style="height: auto;">
                         <function-widget data='["http://smart.cnehs.kr/main.do", "asmhomepage.svg", "학교 사이트 바로가기", "사이트로 이동합니다."]'></function-widget>
-                        <function-widget data='["https://chat.openai.com/", "youtube.svg", "학교 유튜브 보러가기", "사이트로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://www.youtube.com/@user-qp4hz9hs9p", "youtube.svg", "학교 유튜브 보러가기", "사이트로 이동합니다."]'></function-widget>
                         <function-widget data='["https://asm.meistergo.co.kr/", "asmm.svg", "마이스터 되러가기", "사이트로 이동합니다."]'></function-widget>
                         <function-widget data='["https://chat.openai.com/", "chatgpt.svg", "ChatGPT 바로가기", "사이트로 이동합니다."]'></function-widget>
-                        <function-widget data='["https://bard.google.com/", "bard.svg", "Gemini 바로가기", "사이트로 이동합니다."]'></function-widget>
+                        <function-widget data='["https://gemini.google.com/app?hl=ko", "bard.svg", "Gemini 바로가기", "사이트로 이동합니다."]'></function-widget>
                         <function-widget data='["https://www.classcard.net/", "classcard.svg", "클래스카드 바로가기", "사이트로 이동합니다."]'></function-widget>
-                        <function-widget data='["asmmeal.html", "mealsubmit.svg", "급식 신청하기", "페이지로 이동합니다."]'></function-widget>
+                        <function-widget data='["/page/asmmeal.html", "mealsubmit.svg", "급식 신청하기", "페이지로 이동합니다."]'></function-widget>
                         <!-- <function-widget data='["about:blank", "book.svg", "도서관검색", "페이지로 이동합니다."]'></function-widget> -->
                         <function-widget data='["https://schoolbell-e.com/ko/main/home", "schoolpaper.svg", "학교종이 바로가기", "사이트로 이동합니다."]'></function-widget>
                         <function-widget data='["about:blank", "music.svg", "점호송 신청하기", "페이지로 이동합니다."]'></function-widget>
@@ -143,7 +143,15 @@
                 </div>
             </main>
             <footer>
-                footer
+                <p>|&nbsp;</p>
+                <a href="">서비스 소개</a>
+                <p>&nbsp;|&nbsp;</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=8019jsw@naver.com&su=서비스 KSM 건의관련&body=건의 사항을 작성해주세요.">건의하기</a>
+                <p>&nbsp;|&nbsp;</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=8019jsw@naver.com&su=서비스 KSM 버그제보&body=버그 사항을 작성해주세요.">버그제보</a>
+                <p>&nbsp;|&nbsp;</p>
+                <a href="https://mail.google.com/mail/?view=cm&to=8019jsw@naver.com&su=서비스 KSM 문의관련&body=문의 사항을 작성해주세요.">문의하기</a>
+                <p>&nbsp;|</p>
             </footer>
             <div class="splash">
                 <img src="./img/ksmicon.png" id="splash-img" height="20%">
